@@ -13,12 +13,12 @@ jobs:
     if: ${{ github.event.workflow_run.conclusion == 'success' }}
     steps:
     - name: Pull Docker image
-      run: sudo docker pull demonstrationorg/juvenile:main 
+      run: sudo docker pull demonstrationorg/juvenile-lh:main 
     - name: Delete old docker container
-      run: sudo docker rm -f juvenile || true
+      run: sudo docker rm -f juvenile-lh || true
     - name: Run Docker Container
       run: |
-        sudo docker run -d -p 3000:3000 --name juvenile demonstrationorg/juvenile:main
+        sudo docker run -d -p 3000:3000 --name juvenile-lh demonstrationorg/juvenile-lh:main
   on-failure:
     runs-on: ubuntu-latest
     if: ${{ github.event.workflow_run.conclusion == 'failure' }}
